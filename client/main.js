@@ -1,38 +1,47 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
+import { Tracker } from 'meteor/tracker';
+
+import { Players } from './../imports/api/players';
+
+Tracker.autorun( function(){
+    console.log('Players List: ', Players.find().fetch());
+});
 
 const players = [
     {
         _id: 'id_1',
-        name: 'Lauren',
+        name: 'Lauren Smith',
         score: 4
     },{
         _id: 'id_2',
-        name: 'Funaca',
+        name: 'Juan Camilo Quintero',
         score: 7
     },{
         _id: 'id_3',
-        name: 'Laura',
+        name: 'Laura Hernandez',
         score: 2
     },{
-        _id: 'id_3',
-        name: 'Clara',
+        _id: 'id_4',
+        name: 'Clara Fernandez',
         score: 5
     }
 ];
 
 const renderPlayers = function(playersList) {
-    return [<p key="1">1</p>, <p key="2">2</p>, <p key="3">3</p>];
+    return playersList.map( function(player) {
+        return <p key={player._id}><strong><i>{player.name}</i></strong> has {player.score} point(s).</p>
+    });
 };
 
 Meteor.startup(function() {
-    let name = 'juancamilo';
-    let title = 'Titulo';
+    let name = 'Juan Camilo Quintero';
+    let title = 'Score Keep App';
     let jsx = (
         <div>
             <h1>{title}</h1>
-            <h3>HOLA COMPONENTE, me llamo {name}!</h3>
+            <p>Hola Component, me llamo <strong>{name}</strong></p>
             {renderPlayers(players)}
         </div>
     );
