@@ -11,6 +11,20 @@ const renderPlayers = function(playersList) {
 	});
 };
 
+const handleSubmit = function (e){
+	let playerName = e.target.playerName.value;
+
+	e.preventDefault();
+
+	if ( playerName ) {
+		e.target.playerName.value= '';
+		Players.insert({ 
+			name: playerName, 
+			score: 0 
+		});
+	}
+};
+
 Meteor.startup(function() {
 	Tracker.autorun( function(){
 		let players = Players.find().fetch();
@@ -21,15 +35,14 @@ Meteor.startup(function() {
 				<h1>{title}</h1>
 				<p>Hola Component, me llamo <strong>{name}</strong></p>
 				{renderPlayers(players)}
+				<form onSubmit={handleSubmit}>
+					<input type="text" name="playerName" placeholder="Nombre del jugador"/>
+					<button>Añadir Jugador</button>
+				</form>
 			</div>
 		);
 		ReactDOM.render( jsx, document.getElementById('app'));
-	});
-
-	Players.insert({
-		name: 'JuanMArta HErnandez Ramirez',
-		score: 90
-  });
+	});	
 });
 
 
