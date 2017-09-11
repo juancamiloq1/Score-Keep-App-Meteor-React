@@ -10,9 +10,9 @@ export default class Player extends Component{
 				<p>
 					<strong><i>{this.props.player.name}</i></strong> tiene {this.props.player.score} punto(s).
 				</p>
-				<button onClick={() => Players.update({_id: this.props.player._id},  {$inc:{ score: 1 }} )}>+1</button>
-				<button onClick={() => Players.update(this.props.player._id,  {$inc:{ score: -1 }} )}>-1</button>
-				<button onClick={() => Players.remove({ _id: this.props.player._id})}>X</button>
+				<button className="button button--round" onClick={() => Players.update({_id: this.props.player._id},  {$inc:{ score: 1 }} )}>+1</button>
+				<button className="button button--round" onClick={() => Players.update(this.props.player._id,  {$inc:{ score: -1 }} )}>-1</button>
+				<button className="button button--round" onClick={() => Players.remove({ _id: this.props.player._id})}>X</button>
 			</div>
 		);
 	}
