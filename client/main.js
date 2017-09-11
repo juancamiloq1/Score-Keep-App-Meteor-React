@@ -3,11 +3,9 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker';
 
-import { Players } from './../imports/api/players';
+import App from './../imports/ui/App';
 
-import TitleBar from './../imports/ui/TitleBar';
-import AddPlayer from './../imports/ui/AddPlayer';
-import PlayerList from './../imports/ui/PlayerList';
+import { Players } from './../imports/api/players';
 
 
 Meteor.startup( () => {
@@ -15,14 +13,7 @@ Meteor.startup( () => {
 		let players = Players.find().fetch();
 		let name = 'Juan Camilo Quintero';
 		let title = 'Score Keep App';
-		let jsx = (
-			<div>
-				<TitleBar title={title} subtitle='Creado por Juan Camilo Quintero'/>
-				<PlayerList  players={players}/>
-				<AddPlayer />
-			</div>
-		);
-		ReactDOM.render( jsx, document.getElementById('app'));
+		ReactDOM.render( <App title={title} players={players}/>, document.getElementById('app'));
 	});	
 });
 
