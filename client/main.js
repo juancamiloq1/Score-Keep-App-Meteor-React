@@ -7,13 +7,7 @@ import { Players } from './../imports/api/players';
 
 import TitleBar from './../imports/ui/TitleBar';
 import AddPlayer from './../imports/ui/AddPlayer';
-import Player from './../imports/ui/Player';
-
-const renderPlayers = (playersList) => {
-	return playersList.map( (player) => {
-		return <Player key={player._id} player={player}/>
-	});
-};
+import PlayerList from './../imports/ui/PlayerList';
 
 
 Meteor.startup( () => {
@@ -24,11 +18,8 @@ Meteor.startup( () => {
 		let jsx = (
 			<div>
 				<TitleBar title={title} subtitle='Creado por Juan Camilo Quintero'/>
-				
-				{renderPlayers(players)}
-
+				<PlayerList  players={players}/>
 				<AddPlayer />
-				
 			</div>
 		);
 		ReactDOM.render( jsx, document.getElementById('app'));
