@@ -10,7 +10,7 @@ import { Players } from './../imports/api/players';
 
 Meteor.startup( () => {
 	Tracker.autorun( () => {
-		let players = Players.find().fetch();
+		let players = Players.find({}, {sort:{score: -1}}).fetch();
 		let name = 'Juan Camilo Quintero';
 		let title = 'Score Keep App';
 		ReactDOM.render( <App title={title} players={players}/>, document.getElementById('app'));

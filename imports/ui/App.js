@@ -20,4 +20,4 @@ export default class App extends Component{
 App.propTypes = {
     title: PropTypes.string.isRequired,
     players: PropTypes.array.isRequired
-}
+};
