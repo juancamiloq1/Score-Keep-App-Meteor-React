@@ -9,7 +9,7 @@ export default class App extends Component{
     render(){
         return(
             <div>
-                <TitleBar title={this.props.title} subtitle='Creado por Juan Camilo Quintero'/>
+                <TitleBar title={this.props.title}/>
                 <PlayerList  players={this.props.players}/>
                 <AddPlayer />
             </div>
