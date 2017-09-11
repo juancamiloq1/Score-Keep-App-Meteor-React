@@ -7,12 +7,17 @@ export default class Player extends Component{
 	render(){
 		return (
 			<div key={this.props.player._id} className="item">
-				<p>
-					<strong><i>{this.props.player.name}</i></strong> tiene {this.props.player.score} punto(s).
-				</p>
-				<button className="button button--round" onClick={() => Players.update({_id: this.props.player._id},  {$inc:{ score: 1 }} )}>+1</button>
-				<button className="button button--round" onClick={() => Players.update(this.props.player._id,  {$inc:{ score: -1 }} )}>-1</button>
-				<button className="button button--round" onClick={() => Players.remove({ _id: this.props.player._id})}>X</button>
+				<div className="player">
+					<div>
+						<h3 className="player__name"><strong><i>{this.props.player.name}</i></strong></h3>
+						<p className="player__stats"> tiene {this.props.player.score} punto(s).</p>
+					</div>
+					<div className="player__actions">
+						<button className="button button--round" onClick={() => Players.update({_id: this.props.player._id},  {$inc:{ score: 1 }} )}>+1</button>
+						<button className="button button--round" onClick={() => Players.update(this.props.player._id,  {$inc:{ score: -1 }} )}>-1</button>
+						<button className="button button--round" onClick={() => Players.remove({ _id: this.props.player._id})}>X</button>
+					</div>
+				</div>
 			</div>
 		);
 	}
