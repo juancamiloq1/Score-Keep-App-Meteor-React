@@ -5,12 +5,13 @@ import { Players } from './../api/players';
 
 export default class Player extends Component{
 	render(){
+		let itemClassName = `item item--position-${this.props.player.rank}`;
 		return (
-			<div key={this.props.player._id} className="item">
+			<div key={this.props.player._id} className={itemClassName}>
 				<div className="player">
 					<div>
 						<h3 className="player__name"><strong><i>{this.props.player.name}</i></strong></h3>
-						<p className="player__stats">{this.props.player.rank} {this.props.player.position} {this.props.player.score} punto(s).</p>
+						<p className="player__stats">{this.props.player.position} lugar - {this.props.player.score} punto(s).</p>
 					</div>
 					<div className="player__actions">
 						<button className="button button--round" onClick={() => Players.update({_id: this.props.player._id},  {$inc:{ score: 1 }} )}>+1</button>
